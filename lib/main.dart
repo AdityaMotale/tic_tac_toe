@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tic_tac_toe/views/home.view.dart';
+import 'package:tic_tac_toe/views/game.view.dart';
+// import 'package:tic_tac_toe/views/home.view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const HomeView(),
+      home: const GameView(),
     );
   }
 }
