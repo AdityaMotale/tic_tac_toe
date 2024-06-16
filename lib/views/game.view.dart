@@ -59,14 +59,15 @@ class GameView extends StatelessWidget {
                                 right: BorderSide(color: Color(0xFF0c0c0c)),
                               ),
                             ),
-                            child: const Text(
-                              'X',
-                              style: TextStyle(
+                            child: Text(
+                              "X",
+                              style: const TextStyle(
                                 color: Color(0xFF0c0c0c),
                                 fontFamily: "Array",
                                 fontSize: 72,
                                 height: 1,
                               ),
+                              textScaler: MediaQuery.of(context).textScaler,
                             ),
                           );
                         },
