@@ -3,10 +3,10 @@
 /// Design System
 ///
 enum DesignIllustrations {
-  chill("assets/illustrations/chill.png"),
-  cool("assets/illustrations/cool.png"),
-  excited("assets/illustrations/excited.png"),
-  serious("assets/illustrations/serious.png");
+  chill("assets/illustrations/player_chill.png"),
+  cool("assets/illustrations/player_cool.png"),
+  excited("assets/illustrations/player_excited.png"),
+  serious("assets/illustrations/player_serious.png");
 
   final String path;
 

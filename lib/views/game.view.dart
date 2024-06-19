@@ -1,81 +1,38 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import '../design/colors.design.dart';
+import '../widgets/game_board.widget.dart';
 
 class GameView extends StatelessWidget {
   const GameView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final deviceWidth = MediaQuery.of(context).size.width;
+    final randomNumber = Random().nextInt(10);
 
     return Scaffold(
-      backgroundColor: const Color(0xFFEEEEEE),
+      backgroundColor: DesignColors.background,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: SizedBox(
-              width: deviceWidth - (32 * 2),
-              height: deviceWidth - (32 * 2),
-              child: Stack(
-                alignment: AlignmentDirectional.center,
-                children: [
-                  Positioned(
-                    left: 0,
-                    bottom: 0,
-                    child: Container(
-                      width: deviceWidth - (37 * 2),
-                      height: deviceWidth - (37 * 2),
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF0c0c0c),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    top: 0,
-                    child: Container(
-                      width: deviceWidth - (37 * 2),
-                      height: deviceWidth - (37 * 2),
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        border: Border(
-                          left: BorderSide(color: Color(0xFF0c0c0c)),
-                          bottom: BorderSide(color: Color(0xFF0c0c0c)),
-                        ),
-                      ),
-                      child: GridView.builder(
-                        padding: EdgeInsets.zero,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                        ),
-                        itemCount: 9,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            alignment: Alignment.center,
-                            decoration: const BoxDecoration(
-                              border: Border(
-                                top: BorderSide(color: Color(0xFF0c0c0c)),
-                                right: BorderSide(color: Color(0xFF0c0c0c)),
-                              ),
-                            ),
-                            child: Text(
-                              "X",
-                              style: const TextStyle(
-                                color: Color(0xFF0c0c0c),
-                                fontFamily: "Array",
-                                fontSize: 72,
-                                height: 1,
-                              ),
-                              textScaler: MediaQuery.of(context).textScaler,
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+            child: GameBoardWidget(
+              board: const [
+                PlayOptions.empty,
+                PlayOptions.x,
+                PlayOptions.empty,
+                PlayOptions.x,
+                PlayOptions.empty,
+                PlayOptions.o,
+                PlayOptions.empty,
+                PlayOptions.o,
+                PlayOptions.empty,
+              ],
+              onTap: (index) {},
+              player1: randomNumber % 2 == 0 ? PlayOptions.o : PlayOptions.x,
+              player2: randomNumber % 2 == 0 ? PlayOptions.x : PlayOptions.o,
+              playingWithAi: false,
             ),
           ),
         ],

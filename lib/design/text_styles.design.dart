@@ -12,7 +12,7 @@ class DesignTextStyles {
     color: DesignColors.primary,
     fontFamily: 'Array',
     fontWeight: FontWeight.w400,
-    height: 0.01,
+    height: 1,
   );
 
   ///
