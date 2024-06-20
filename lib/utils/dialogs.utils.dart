@@ -4,6 +4,7 @@ import '../design/colors.design.dart';
 import '../design/icons.design.dart';
 import '../design/text_styles.design.dart';
 import '../views/play_with_ai.view.dart';
+import '../views/play_with_friend.dart';
 import '../widgets/icon_button.widget.dart';
 
 void showGamePauseDialog(
@@ -38,6 +39,7 @@ void showGamePauseDialog(
 void showGameResultDialog(
   BuildContext context, {
   required String title,
+  bool isPlayingWithAi = true,
 }) async {
   final deviceWidth = MediaQuery.of(context).size.width;
   final deviceHeight = MediaQuery.of(context).size.height;
@@ -65,7 +67,9 @@ void showGameResultDialog(
 
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (_) => const PlayWithAiView(),
+                        builder: (_) => isPlayingWithAi
+                            ? const PlayWithAiView()
+                            : const PlayWithFriendView(),
                       ),
                     );
                   },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_toe/views/play_with_friend.dart';
 
 import '../design/colors.design.dart';
 import '../design/icons.design.dart';
@@ -59,7 +60,15 @@ class HomeView extends StatelessWidget {
                   },
                 ),
                 const SizedBox(height: 24),
-                ButtonWidget(title: "Play With A Friend", onTap: () {}),
+                ButtonWidget(
+                    title: "Play With A Friend",
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => const PlayWithFriendView(),
+                        ),
+                      );
+                    }),
               ],
             ),
           ),

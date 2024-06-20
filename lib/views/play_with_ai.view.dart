@@ -86,7 +86,7 @@ class _PlayWithAiViewState extends State<PlayWithAiView> {
 
     populateBoardWithEmptyValues();
 
-    final randomNumber = Random().nextInt(10);
+    final randomNumber = Random().nextInt(100);
 
     humanPlayer = randomNumber % 2 == 0 ? PlayOptions.o : PlayOptions.x;
     aiPlayer = randomNumber % 2 == 0 ? PlayOptions.x : PlayOptions.o;
@@ -134,7 +134,7 @@ class _PlayWithAiViewState extends State<PlayWithAiView> {
                                 child: Column(
                                   children: [
                                     Text(
-                                      "You - X",
+                                      "You - ${humanPlayer.value}",
                                       style: DesignTextStyles.body2,
                                     ),
                                     const SizedBox(height: 16),
@@ -151,7 +151,7 @@ class _PlayWithAiViewState extends State<PlayWithAiView> {
                                 child: Column(
                                   children: [
                                     Text(
-                                      "Game AI - O",
+                                      "Game AI - ${aiPlayer.value}",
                                       style: DesignTextStyles.body2,
                                     ),
                                     const SizedBox(height: 16),
