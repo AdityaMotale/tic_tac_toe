@@ -3,10 +3,16 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../design/colors.design.dart';
+import '../design/icons.design.dart';
 import '../design/illustrations.design.dart';
 import '../design/text_styles.design.dart';
+import '../domain/engine.domain.dart';
+import '../utils/dialogs.utils.dart';
 import '../widgets/game_board.widget.dart';
+import '../widgets/icon_button.widget.dart';
 import '../widgets/illustration.widget.dart';
+
+enum _Players { ai, human }
 
 class PlayWithAiView extends StatefulWidget {
   const PlayWithAiView({super.key});
@@ -17,10 +23,60 @@ class PlayWithAiView extends StatefulWidget {
 
 class _PlayWithAiViewState extends State<PlayWithAiView> {
   List<PlayOptions> board = [];
+  late final PlayOptions humanPlayer;
+  late final PlayOptions aiPlayer;
+
+  final GameEngine engine = GameEngine();
+
+  _Players currentPlayer = _Players.human;
 
   void populateBoardWithEmptyValues([int size = 9]) {
     for (int i = 0; i < size; i++) {
       board.add(PlayOptions.empty);
+    }
+  }
+
+  void playForPlayer(int index) {
+    if (currentPlayer == _Players.ai) {
+      return;
+    }
+
+    board[index] = humanPlayer;
+    currentPlayer = _Players.ai;
+
+    if (engine.checkWinner(humanPlayer, board)) {
+      showGameResultDialog(context, title: "You Win :)");
+      return;
+    }
+
+    if (engine.isBoardFull(board)) {
+      showGameResultDialog(context, title: "Game Drawn!");
+      return;
+    }
+
+    setState(() {});
+
+    Future.delayed(const Duration(milliseconds: 2500), () {
+      playForAI();
+    });
+  }
+
+  void playForAI() {
+    if (engine.isBoardFull(board)) {
+      return;
+    }
+
+    final aiMove = engine.playAiMove(board, aiPlayer: aiPlayer);
+
+    if (aiMove != null) {
+      board[aiMove] = aiPlayer;
+      currentPlayer = _Players.human;
+
+      setState(() {});
+
+      if (engine.checkWinner(aiPlayer, board)) {
+        showGameResultDialog(context, title: "You Loose :(");
+      }
     }
   }
 
@@ -29,6 +85,11 @@ class _PlayWithAiViewState extends State<PlayWithAiView> {
     super.initState();
 
     populateBoardWithEmptyValues();
+
+    final randomNumber = Random().nextInt(10);
+
+    humanPlayer = randomNumber % 2 == 0 ? PlayOptions.o : PlayOptions.x;
+    aiPlayer = randomNumber % 2 == 0 ? PlayOptions.x : PlayOptions.o;
   }
 
   @override
@@ -47,7 +108,10 @@ class _PlayWithAiViewState extends State<PlayWithAiView> {
           alignment: AlignmentDirectional.center,
           children: [
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 48),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
+                vertical: 48,
+              ),
               width: deviceWidth,
               height: deviceHeight,
               child: Column(
@@ -63,25 +127,31 @@ class _PlayWithAiViewState extends State<PlayWithAiView> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Column(
-                                children: [
-                                  Text(
-                                    "You - X",
-                                    style: DesignTextStyles.body2,
-                                  ),
-                                  const SizedBox(height: 16),
-                                  const DesignIllustration(
-                                    illustrationSize: illustrationSize,
-                                    illustration: DesignIllustrations.excited,
-                                  ),
-                                ],
-                              ),
                               Opacity(
-                                opacity: 0.25,
+                                opacity: currentPlayer == _Players.human
+                                    ? 1.0
+                                    : 0.25,
                                 child: Column(
                                   children: [
                                     Text(
-                                      "You - O",
+                                      "You - X",
+                                      style: DesignTextStyles.body2,
+                                    ),
+                                    const SizedBox(height: 16),
+                                    const DesignIllustration(
+                                      illustrationSize: illustrationSize,
+                                      illustration: DesignIllustrations.excited,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Opacity(
+                                opacity:
+                                    currentPlayer == _Players.ai ? 1.0 : 0.25,
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      "Game AI - O",
                                       style: DesignTextStyles.body2,
                                     ),
                                     const SizedBox(height: 16),
@@ -103,27 +173,62 @@ class _PlayWithAiViewState extends State<PlayWithAiView> {
                           top: illustrationSize,
                           child: GameBoardWidget(
                             maxBoardSize: maxBoardSize,
-                            board: const [
-                              PlayOptions.empty,
-                              PlayOptions.empty,
-                              PlayOptions.x,
-                              PlayOptions.empty,
-                              PlayOptions.o,
-                              PlayOptions.empty,
-                              PlayOptions.x,
-                              PlayOptions.empty,
-                              PlayOptions.o,
-                            ],
-                            onTap: (i) {},
+                            board: board,
+                            player1: humanPlayer,
+                            player2: aiPlayer,
+                            onTap: (i) {
+                              playForPlayer(i);
+                            },
                           ),
                         ),
                       ],
                     ),
                   ),
                   const Expanded(child: SizedBox()),
-                  Text("X", style: DesignTextStyles.heading2),
+                  Text(
+                    currentPlayer == _Players.ai
+                        ? aiPlayer.value
+                        : humanPlayer.value,
+                    style: DesignTextStyles.heading2.copyWith(
+                      color: currentPlayer == _Players.ai
+                          ? DesignColors.accent_1
+                          : DesignColors.primary,
+                    ),
+                  ),
                   const SizedBox(height: 32),
-                  Text("Your Move", style: DesignTextStyles.body1),
+                  Text(
+                    currentPlayer == _Players.ai ? "AI's Move" : "Your Move",
+                    style: DesignTextStyles.body1,
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 48),
+              width: deviceWidth,
+              height: deviceHeight,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  IconButtonWidget(
+                      icon: DesignIcons.close,
+                      onTap: () {
+                        Navigator.pop(context);
+                      }),
+                  const SizedBox(width: 12),
+                  IconButtonWidget(
+                    icon: DesignIcons.pause,
+                    onTap: () {
+                      showGamePauseDialog(
+                        context,
+                        title: "Game Paused",
+                        icon: DesignIcons.play,
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                      );
+                    },
+                  ),
                 ],
               ),
             ),

@@ -26,7 +26,7 @@ class IconButtonWidget extends StatelessWidget {
     const double offset = 4;
 
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: SizedBox(
         width: stackWidth,
         height: stackWidth,

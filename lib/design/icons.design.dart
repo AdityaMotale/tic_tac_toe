@@ -7,7 +7,7 @@ enum DesignIcons {
   pause("assets/icons/pause.png"),
   play("assets/icons/play.png"),
   home("assets/icons/home.png"),
-  redo("assets/icons/play.png"),
+  redo("assets/icons/redo.png"),
   stack("assets/icons/stack.png");
 
   final String path;
