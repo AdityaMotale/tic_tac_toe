@@ -29,7 +29,7 @@ class ButtonWidget extends StatelessWidget {
     const double offset = 8;
 
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: SizedBox(
         width: stackWidth,
         height: stackHeight,

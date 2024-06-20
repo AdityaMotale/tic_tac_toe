@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import '../design/colors.design.dart';
@@ -39,10 +37,13 @@ class GameBoardWidget extends StatelessWidget {
 
   final bool playingWithAi;
 
+  final double maxBoardSize;
+
   const GameBoardWidget({
     super.key,
     required this.board,
     required this.onTap,
+    required this.maxBoardSize,
     this.player1 = PlayOptions.x,
     this.player2 = PlayOptions.o,
     this.playingWithAi = true,
@@ -50,13 +51,11 @@ class GameBoardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final deviceWidth = MediaQuery.of(context).size.width;
-    final double maxWidth = min(deviceWidth - 48, 354);
-    final boardWidth = maxWidth - 20;
+    final boardWidth = maxBoardSize - 20;
 
     return SizedBox(
-      width: maxWidth,
-      height: maxWidth,
+      width: maxBoardSize,
+      height: maxBoardSize,
       child: Stack(
         alignment: AlignmentDirectional.center,
         children: [

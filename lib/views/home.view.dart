@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import '../design/icons.design.dart';
-import '../widgets/button.widget.dart';
-import '../widgets/icon_button.widget.dart';
 
 import '../design/colors.design.dart';
+import '../design/icons.design.dart';
 import '../design/text_styles.design.dart';
+import '../widgets/button.widget.dart';
+import '../widgets/icon_button.widget.dart';
 import '../widgets/xo_grid.widget.dart';
+import 'play_with_ai.view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -47,7 +48,16 @@ class HomeView extends StatelessWidget {
                 const Expanded(child: SizedBox()),
                 Text("Select Mode", style: DesignTextStyles.body2),
                 const SizedBox(height: 36),
-                ButtonWidget(title: "Single Player", onTap: () {}),
+                ButtonWidget(
+                  title: "Single Player",
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const PlayWithAiView(),
+                      ),
+                    );
+                  },
+                ),
                 const SizedBox(height: 24),
                 ButtonWidget(title: "Play With A Friend", onTap: () {}),
               ],
