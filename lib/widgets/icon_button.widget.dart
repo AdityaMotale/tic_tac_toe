@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../design/icons.design.dart';
+
 import '../design/colors.design.dart';
+import '../design/icons.design.dart';
 
 enum ButtonState {
   active,

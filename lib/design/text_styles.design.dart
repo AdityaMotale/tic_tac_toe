@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tic_tac_toe/design/colors.design.dart';
+import 'colors.design.dart';
 
 ///
 /// Predefined text styles according to app's Design System

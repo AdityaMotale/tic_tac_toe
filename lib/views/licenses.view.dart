@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'license_detail.view.dart';
 
 import '../design/colors.design.dart';
 import '../design/icons.design.dart';
@@ -9,6 +8,7 @@ import '../design/text_styles.design.dart';
 import '../oss_licenses.dart';
 import '../widgets/icon_button.widget.dart';
 import '../widgets/xo_grid.widget.dart';
+import 'license_detail.view.dart';
 
 class LicensesView extends StatelessWidget {
   const LicensesView({super.key});

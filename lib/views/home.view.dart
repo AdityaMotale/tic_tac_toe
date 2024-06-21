@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tic_tac_toe/views/about.view.dart';
-import 'package:tic_tac_toe/views/licenses.view.dart';
-import 'package:tic_tac_toe/views/play_with_friend.dart';
+import 'about.view.dart';
+import 'licenses.view.dart';
+import 'play_with_friend.dart';
 
 import '../design/colors.design.dart';
 import '../design/icons.design.dart';
