@@ -36,6 +36,7 @@ class HomeView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 const Expanded(child: SizedBox()),
+                if (deviceHeight > 1000) const Expanded(child: SizedBox()),
                 Text(
                   "tic",
                   style: DesignTextStyles.title.copyWith(fontSize: 76),
@@ -72,6 +73,7 @@ class HomeView extends StatelessWidget {
                     );
                   },
                 ),
+                if (deviceHeight > 1000) const Expanded(child: SizedBox()),
               ],
             ),
           ),

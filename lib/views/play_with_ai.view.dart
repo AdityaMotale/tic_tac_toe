@@ -56,7 +56,7 @@ class _PlayWithAiViewState extends State<PlayWithAiView> {
 
     setState(() {});
 
-    Future.delayed(const Duration(milliseconds: 2500), () {
+    Future.delayed(const Duration(milliseconds: 1000), () {
       playForAI();
     });
   }
@@ -118,6 +118,7 @@ class _PlayWithAiViewState extends State<PlayWithAiView> {
                 children: [
                   const Expanded(child: SizedBox()),
                   SizedBox(
+                    width: maxBoardSize,
                     height: maxBoardSize + illustrationSize,
                     child: Stack(
                       alignment: AlignmentDirectional.topCenter,

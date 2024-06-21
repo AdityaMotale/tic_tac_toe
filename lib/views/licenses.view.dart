@@ -30,66 +30,69 @@ class LicensesView extends StatelessWidget {
               deviceWidth: deviceWidth,
               deviceHeight: deviceHeight,
             ),
-            ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              itemCount: allDependencies.length + 1,
-              itemBuilder: (context, index) {
-                if (index == 0) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 24,
-                      horizontal: 16,
-                    ),
-                    child: IconButtonWidget(
-                      icon: DesignIcons.close,
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  );
-                }
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (_) => LicenseDetailView(
-                          package: allDependencies[index - 1],
-                        ),
+            SizedBox(
+              width: min(deviceWidth, 500),
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                itemCount: allDependencies.length + 1,
+                itemBuilder: (context, index) {
+                  if (index == 0) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 24,
+                        horizontal: 16,
+                      ),
+                      child: IconButtonWidget(
+                        icon: DesignIcons.close,
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
                       ),
                     );
-                  },
-                  child: Container(
-                    height: 56,
-                    width: min(deviceWidth - 32, 354),
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 12,
-                      horizontal: 16,
-                    ),
-                    padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      color: DesignColors.secondary,
-                      border: Border.all(
-                        color: DesignColors.primary,
-                        width: 2,
-                      ),
-                    ),
-                    child: Container(
-                      color: DesignColors.primary,
-                      child: Row(
-                        children: [
-                          const SizedBox(width: 12),
-                          Text(
-                            allDependencies[index - 1].name,
-                            style: DesignTextStyles.body2.copyWith(
-                              color: DesignColors.secondary,
-                            ),
+                  }
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => LicenseDetailView(
+                            package: allDependencies[index - 1],
                           ),
-                        ],
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: 56,
+                      width: min(deviceWidth - 32, 354),
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 12,
+                        horizontal: 16,
+                      ),
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: DesignColors.secondary,
+                        border: Border.all(
+                          color: DesignColors.primary,
+                          width: 2,
+                        ),
+                      ),
+                      child: Container(
+                        color: DesignColors.primary,
+                        child: Row(
+                          children: [
+                            const SizedBox(width: 12),
+                            Text(
+                              allDependencies[index - 1].name,
+                              style: DesignTextStyles.body2.copyWith(
+                                color: DesignColors.secondary,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ],
         ),

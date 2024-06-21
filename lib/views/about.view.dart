@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../design/colors.design.dart';
@@ -26,7 +28,8 @@ class AboutView extends StatelessWidget {
               deviceHeight: deviceHeight,
             ),
             SingleChildScrollView(
-              child: Padding(
+              child: Container(
+                width: min(deviceWidth, 500),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 24, vertical: 48),
                 child: Column(
