@@ -48,7 +48,7 @@ class _PlayWithFriendViewState extends State<PlayWithFriendView> {
       showGameResultDialog(
         context,
         title: "Player 1 Wins :D",
-        isPlayingWithAi: true,
+        isPlayingWithAi: false,
       );
       return;
     }
@@ -57,7 +57,7 @@ class _PlayWithFriendViewState extends State<PlayWithFriendView> {
       showGameResultDialog(
         context,
         title: "Player 2 Wins :D",
-        isPlayingWithAi: true,
+        isPlayingWithAi: false,
       );
       return;
     }
@@ -66,7 +66,7 @@ class _PlayWithFriendViewState extends State<PlayWithFriendView> {
       showGameResultDialog(
         context,
         title: "Game Drawn!",
-        isPlayingWithAi: true,
+        isPlayingWithAi: false,
       );
       return;
     }

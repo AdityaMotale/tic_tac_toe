@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../design/colors.design.dart';
 import '../design/icons.design.dart';
 import '../design/text_styles.design.dart';
@@ -74,21 +75,38 @@ class AboutView extends StatelessWidget {
                       style: DesignTextStyles.text1,
                     ),
                     const SizedBox(height: 20),
-                    Text(
-                      "• GitHub Repository",
-                      style: DesignTextStyles.text2.copyWith(
-                        decoration: TextDecoration.underline,
-                        decorationThickness: 1.5,
-                        decorationColor: DesignColors.primary,
+                    TextButton(
+                      onPressed: () async {
+                        await launchUrl(
+                          Uri.parse(
+                            "https://github.com/AdityaMotale/tic_tac_toe",
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "• GitHub Repository",
+                        style: DesignTextStyles.text2.copyWith(
+                          decoration: TextDecoration.underline,
+                          decorationThickness: 1.5,
+                          decorationColor: DesignColors.primary,
+                        ),
                       ),
                     ),
-                    const SizedBox(height: 12),
-                    Text(
-                      "• Figma Designs",
-                      style: DesignTextStyles.text2.copyWith(
-                        decoration: TextDecoration.underline,
-                        decorationThickness: 1.5,
-                        decorationColor: DesignColors.primary,
+                    TextButton(
+                      onPressed: () async {
+                        await launchUrl(
+                          Uri.parse(
+                            "https://www.figma.com/community/file/1385900866220392105/tictactoe",
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "• Figma Designs",
+                        style: DesignTextStyles.text2.copyWith(
+                          decoration: TextDecoration.underline,
+                          decorationThickness: 1.5,
+                          decorationColor: DesignColors.primary,
+                        ),
                       ),
                     ),
                   ],
