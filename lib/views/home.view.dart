@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'about.view.dart';
-import 'licenses.view.dart';
-import 'play_with_friend.dart';
 
 import '../design/colors.design.dart';
 import '../design/icons.design.dart';
@@ -9,7 +6,10 @@ import '../design/text_styles.design.dart';
 import '../widgets/button.widget.dart';
 import '../widgets/icon_button.widget.dart';
 import '../widgets/xo_grid.widget.dart';
+import 'about.view.dart';
+import 'licenses.view.dart';
 import 'play_with_ai.view.dart';
+import 'play_with_friend.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

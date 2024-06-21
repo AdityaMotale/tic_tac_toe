@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import '../design/colors.design.dart';
 import '../design/icons.design.dart';
 import '../design/text_styles.design.dart';

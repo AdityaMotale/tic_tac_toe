@@ -41,6 +41,8 @@ class _PlayWithAiViewState extends State<PlayWithAiView> {
       return;
     }
 
+    if (!engine.isMoveAvailable(index, board)) return;
+
     board[index] = humanPlayer;
     currentPlayer = _Players.ai;
 

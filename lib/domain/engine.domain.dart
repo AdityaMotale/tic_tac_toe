@@ -29,6 +29,12 @@ class GameEngine {
     return false;
   }
 
+  bool isMoveAvailable(int move, List<PlayOptions> board) {
+    if (move > board.length) return false;
+
+    return board[move] == PlayOptions.empty;
+  }
+
   ///
   /// fetch the list of indexes of available moves from the board
   ///

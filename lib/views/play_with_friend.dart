@@ -36,6 +36,8 @@ class _PlayWithFriendViewState extends State<PlayWithFriendView> {
   }
 
   void playForPlayer(int index) {
+    if (!engine.isMoveAvailable(index, board)) return;
+
     if (currentPlayer == _Players.player1) {
       board[index] = player1;
       currentPlayer = _Players.player2;
