@@ -34,23 +34,23 @@ class DesignTextStyles {
   static TextStyle get body1 => dmSans.copyWith(
         fontSize: 20,
         fontWeight: FontWeight.w500,
-        height: 0.06,
+        height: 1.25,
       );
 
   static TextStyle get body2 => dmSans.copyWith(
         fontSize: 16,
         fontWeight: FontWeight.w500,
-        height: 0.08,
+        height: 1.25,
       );
 
   static TextStyle get text1 => dmSans.copyWith(
         fontSize: 16,
-        height: 0.09,
+        height: 1.25,
       );
 
   static TextStyle get text2 => dmSans.copyWith(
         fontSize: 16,
         fontWeight: FontWeight.w500,
-        height: 0.11,
+        height: 1.25,
       );
 }

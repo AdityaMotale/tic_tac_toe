@@ -45,17 +45,29 @@ class _PlayWithFriendViewState extends State<PlayWithFriendView> {
     }
 
     if (engine.checkWinner(player1, board)) {
-      showGameResultDialog(context, title: "Player 1 Wins :D");
+      showGameResultDialog(
+        context,
+        title: "Player 1 Wins :D",
+        isPlayingWithAi: true,
+      );
       return;
     }
 
     if (engine.checkWinner(player2, board)) {
-      showGameResultDialog(context, title: "Player 2 Wins :D");
+      showGameResultDialog(
+        context,
+        title: "Player 2 Wins :D",
+        isPlayingWithAi: true,
+      );
       return;
     }
 
     if (engine.isBoardFull(board)) {
-      showGameResultDialog(context, title: "Game Drawn!");
+      showGameResultDialog(
+        context,
+        title: "Game Drawn!",
+        isPlayingWithAi: true,
+      );
       return;
     }
 
