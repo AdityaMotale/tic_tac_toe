@@ -11,6 +11,8 @@ dependencies:
   device_preview: ^1.2.0
   flutter:
     sdk: flutter
+  flutter_oss_licenses: ^3.0.2
+  paw: ^0.0.4
 
   # cupertino_icons: ^1.0.6
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/views/about.view.dart';
+import 'package:tic_tac_toe/views/licenses.view.dart';
 import 'package:tic_tac_toe/views/play_with_friend.dart';
 
 import '../design/colors.design.dart';
@@ -81,7 +82,16 @@ class HomeView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                IconButtonWidget(icon: DesignIcons.stack, onTap: () {}),
+                IconButtonWidget(
+                  icon: DesignIcons.stack,
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const LicensesView(),
+                      ),
+                    );
+                  },
+                ),
                 const SizedBox(height: 12),
                 IconButtonWidget(
                   icon: DesignIcons.info,

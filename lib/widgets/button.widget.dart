@@ -57,17 +57,16 @@ class ButtonWidget extends StatelessWidget {
                   ),
                 ),
                 child: Container(
+                  alignment: Alignment.center,
                   color: state == ButtonState.disabled
                       ? DesignColors.secondaryBackground
                       : DesignColors.primary,
-                  child: Center(
-                    child: Text(
-                      title,
-                      style: DesignTextStyles.body1.copyWith(
-                        color: state == ButtonState.disabled
-                            ? DesignColors.primary
-                            : DesignColors.secondary,
-                      ),
+                  child: Text(
+                    title,
+                    style: DesignTextStyles.body1.copyWith(
+                      color: state == ButtonState.disabled
+                          ? DesignColors.primary
+                          : DesignColors.secondary,
                     ),
                   ),
                 ),
